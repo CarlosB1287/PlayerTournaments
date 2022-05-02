@@ -1,0 +1,63 @@
+@page
+@model PlayerTournaments.Pages.Players.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.LastName)
+        </dd>
+        <ul>       
+                @* List each Tournament the Player is enrolled in
+                   Display an HTML button next to each Tournament to Drop the Tournament.
+                   In order to drop a Tournament, we must know the TournamentID. Use the hidden input type for that
+                   The button uses asp-page-handler to call OnPostDeleteTournament() method
+                *@
+                @foreach(var tournament in Model.Player.PlayerTournaments)
+                {
+                    <form method="post">
+                        <input type="hidden" asp-for="TournamentIdToDelete" value="@tournament.Tournament.TournamentID" />
+                        <li>
+                            @tournament.Tournament.Description <input type="submit" Value="Drop" class="btn btn-danger btn-sm my-1" asp-page-handler="DeleteTournament" asp-route-id="@Model.Player.PlayerID">
+                        </li>
+                    </form>
+                }
+        </ul>
+    </dl>
+    <div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="Player.PlayerID" />
+            <div class="form-group">
+                <select asp-items="Model.TournamentsDropDown" asp-for="TournamentIdToAdd" class="form-control">
+                    <option value="">--Select Tournament to Add--</option>
+                </select>
+                <span asp-validation-for="TournamentIdToAdd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Tournament" class="btn btn-primary" asp-page-handler="" asp-route-id="@Model.Player.PlayerID"/>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Player.PlayerID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

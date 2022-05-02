@@ -17,8 +17,8 @@ namespace PlayerTournaments.Models
                     return;
                 }
 
-                List<Player> Players = new List<Player> {
-                    new Player {FirstName="Tiger", LastName="Woods"},
+                List<Player> players = new List<Player> {
+                    new Player {FirstName="TIGER", LastName="WOODS"},
                     new Player {FirstName="RORY", LastName="MCLLROY"},
                     new Player {FirstName="JON", LastName="RAHM"},
                     new Player {FirstName="JUSTIN", LastName="THOMAS"},
@@ -50,9 +50,9 @@ namespace PlayerTournaments.Models
                     new Player {FirstName="JASON", LastName="DAY"},
                     new Player {FirstName="RICKIE", LastName="FOWLER"},
                 };
-                context.AddRange(Players);
+                context.AddRange(players);
 
-                List<Tournament> Tournaments = new List<Tournament> {
+                List<Tournament> tournaments = new List<Tournament> {
                     new Tournament {Description = "TOUR CHAMPIONSHIP"},
                     new Tournament {Description = "THE OPEN"},
                     new Tournament {Description = "U.S. OPEN"},
@@ -61,9 +61,9 @@ namespace PlayerTournaments.Models
                     new Tournament {Description = "THE PLAYERS"},
                     new Tournament {Description = "MASTERS"},
                 };
-                context.AddRange(Tournaments);
+                context.AddRange(tournaments);
 
-                List<PlayerTournament> Participation = new List<PlayerTournament> {
+                List<PlayerTournament> participation = new List<PlayerTournament> {
                     new PlayerTournament {TournamentID = 1, PlayerID = 10},
                     new PlayerTournament {TournamentID = 1, PlayerID = 6},
                     new PlayerTournament {TournamentID = 1, PlayerID = 3},
@@ -84,7 +84,7 @@ namespace PlayerTournaments.Models
                     new PlayerTournament {TournamentID = 2, PlayerID = 18},
                     new PlayerTournament {TournamentID = 2, PlayerID = 23},
                 };
-                context.AddRange(Participation);
+                context.AddRange(participation);
 
                 context.SaveChanges();
             }

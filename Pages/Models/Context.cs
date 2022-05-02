@@ -14,7 +14,9 @@ namespace PlayerTournaments.Models
         }
 
         public DbSet<Tournament> Tournament {get; set;}
+
         public DbSet<Player> Player {get; set;}
-        public DbSet<PlayerTournament> PlayerTournaments {get; set;}
+
+        public DbSet<PlayerTournament> PlayerTournament {get; set;}
     }
 }

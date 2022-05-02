@@ -1,0 +1,55 @@
+@page
+@model PlayerTournaments.Pages.Players.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Player[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Player[0].LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Player) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @*  tournament represents a PlayerTournament record
+                    Each Tournament has a Tournament navigation property which is the actual Tournament
+                    The Tournament has a description. So you do tournament.Tournament.Description *@
+                @foreach (var tournament in item.PlayerTournaments)
+                {
+                    @tournament.Tournament.Description <br />
+                }
+                @if (item.PlayerTournaments.Count == 0)
+                {
+                    @:Not Participating
+                }
+            </td>            
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PlayerID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PlayerID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PlayerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
