@@ -14,6 +14,5 @@ namespace PlayerTournaments.Models
         [Required]
         public string LastName {get; set;}
         public List<PlayerTournament> PlayerTournaments{get; set;} // Navigation Property. Player can have MANY PlayerTournaments
-
     }
 }

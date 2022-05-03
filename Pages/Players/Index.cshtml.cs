@@ -16,15 +16,12 @@ namespace PlayerTournaments.Pages.Players
         public IndexModel(PlayerTournaments.Models.Context context)
         {
             _context = context;
-            
-
         }
 
         public IList<Player> Player { get;set; }
 
         public async Task OnGetAsync()
         {
-            // Bring in related data. This is Many-to-Many so Include=>PlayerTournaments ThenInclude=>Tournament
             Player = await _context.Player.Include(s => s.PlayerTournaments).ThenInclude(sc => sc.Tournament).ToListAsync();
         }
     }

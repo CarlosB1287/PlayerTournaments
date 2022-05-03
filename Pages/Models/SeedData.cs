@@ -31,7 +31,7 @@ namespace PlayerTournaments.Models
                     new Player {FirstName="CAMERON", LastName="SMITH"},
                     new Player {FirstName="SCOTTIE", LastName="SCHEFFLER"},
                     new Player {FirstName="DANIEL", LastName="BERGER"},
-                    new Player {FirstName="ADAM", LastName="RSCOTT"},
+                    new Player {FirstName="ADAM", LastName="SCOTT"},
                     new Player {FirstName="WEBB", LastName="SIMPSON"},
                     new Player {FirstName="SAM", LastName="BURNS"},
                     new Player {FirstName="BROOKS", LastName="KOEPKA"},
@@ -44,14 +44,15 @@ namespace PlayerTournaments.Models
                     new Player {FirstName="TONY", LastName="FINAU"},
                     new Player {FirstName="MATT", LastName="KUCHAR"},
                     new Player {FirstName="ABRAHAM", LastName="ANCER"},
-                    new Player {FirstName="LOIUS", LastName="OOSTHIZEN"},
+                    new Player {FirstName="LOUIS", LastName="OOSTHIZEN"},
                     new Player {FirstName="TYRREL", LastName="HATTON"},
                     new Player {FirstName="HAROLLD", LastName="VARNER III"},
                     new Player {FirstName="JASON", LastName="DAY"},
                     new Player {FirstName="RICKIE", LastName="FOWLER"},
                 };
                 context.AddRange(players);
-
+                context.SaveChanges();
+    
                 List<Tournament> tournaments = new List<Tournament> {
                     new Tournament {Description = "TOUR CHAMPIONSHIP"},
                     new Tournament {Description = "THE OPEN"},
@@ -62,27 +63,28 @@ namespace PlayerTournaments.Models
                     new Tournament {Description = "MASTERS"},
                 };
                 context.AddRange(tournaments);
+                context.SaveChanges();
 
                 List<PlayerTournament> participation = new List<PlayerTournament> {
-                    new PlayerTournament {TournamentID = 1, PlayerID = 10},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 6},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 3},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 17},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 8},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 28},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 5},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 16},
-                    new PlayerTournament {TournamentID = 1, PlayerID = 2},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 4},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 6},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 3},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 17},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 8},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 18},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 5},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 16},
+                    new PlayerTournament {TournamentID = 0, PlayerID = 1},
 
-                    new PlayerTournament {TournamentID = 2, PlayerID = 3},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 9},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 19},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 15},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 7},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 1},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 21},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 18},
-                    new PlayerTournament {TournamentID = 2, PlayerID = 23},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 3},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 9},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 19},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 5},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 7},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 1},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 11},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 18},
+                    new PlayerTournament {TournamentID = 1, PlayerID = 13},    
                 };
                 context.AddRange(participation);
 

@@ -32,18 +32,16 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @*  tournament represents a PlayerTournament record
-                    Each Tournament has a Tournament navigation property which is the actual Tournament
-                    The Tournament has a description. So you do tournament.Tournament.Description *@
+            @*hi*@
                 @foreach (var tournament in item.PlayerTournaments)
                 {
                     @tournament.Tournament.Description <br />
                 }
                 @if (item.PlayerTournaments.Count == 0)
                 {
-                    @:Not Participating
-                }
-            </td>            
+                    @:Not Enrolled
+                }   
+            </td>     
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.PlayerID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.PlayerID">Details</a> |
