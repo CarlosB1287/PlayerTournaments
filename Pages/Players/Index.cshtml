@@ -10,11 +10,38 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to List</a>
+        </p>
+    </div>
+</form>
+
+<form>
+	<select asp-for="CurrentSort" asp-items="Model.SortList">
+		<option value="">sort by...</option>
+	</select>
+	<button type="submit">Sort</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Player[0].FirstName)
+                 @{
+                    // Alternate sort order
+                    var firstSort = "first_asc";
+                    if (Model.CurrentSort == "first_asc")
+                    {
+                        firstSort = "first_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@firstSort">@Html.DisplayNameFor(model => model.Player[0].FirstName)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Player[0].LastName)
@@ -35,7 +62,7 @@
             @*hi*@
                 @foreach (var tournament in item.PlayerTournaments)
                 {
-                    @tournament.Tournament.Description <br />
+                    @tournament.Tournament.Description <br/>
                 }
                 @if (item.PlayerTournaments.Count == 0)
                 {
@@ -43,11 +70,44 @@
                 }   
             </td>     
             <td>
+            @*hi*@
+                @foreach (var tournament in item.PlayerTournaments)
+                {
+                    @tournament.Score <br/>
+                }
+                @if (item.PlayerTournaments.Count == 0)
+                {
+                    @:Not Enrolled
+                }   
+            </td>    
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.PlayerID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.PlayerID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.PlayerID">Delete</a>
             </td>
         </tr>
+
 }
     </tbody>
 </table>
+<hr />
+
+@{
+    var prevDisable="";
+    if(Model.PageNum <= 1)
+    {
+        prevDisable = "disabled";
+    }
+}
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item @prevDisable"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+    <li class="page-item"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+  </ul>
+</nav>
+
+
+
+
+

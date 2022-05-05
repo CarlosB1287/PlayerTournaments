@@ -8,7 +8,7 @@ using PlayerTournaments.Models;
 namespace PlayerTournaments.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220503192713_InitialCreate")]
+    [Migration("20220505140323_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace PlayerTournaments.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("PlayerID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Score")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("TournamentID", "PlayerID");

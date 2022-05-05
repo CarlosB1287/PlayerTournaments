@@ -38,7 +38,8 @@ namespace PlayerTournaments.Migrations
                 columns: table => new
                 {
                     TournamentID = table.Column<int>(nullable: false),
-                    PlayerID = table.Column<int>(nullable: false)
+                    PlayerID = table.Column<int>(nullable: false),
+                    Score = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

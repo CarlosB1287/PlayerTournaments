@@ -14,8 +14,10 @@ namespace PlayerTournaments.Models
     public class PlayerTournament
     {
         public int TournamentID {get; set;}     // Composite Primary Key, Foreign Key 1
-        public int PlayerID {get; set;}    // Composite Primary Key, Foreign Key 2
+        public int PlayerID {get; set;}   // Composite Primary Key, Foreign Key 2
+        public int Score {get; set;}
         public Player Player {get; set;}  // Navigation Property. One Student per PlayerTournaments
-        public Tournament Tournament {get; set;}  // Navigation Property. One Tournamnet per PlayerTournaments
+        public Tournament Tournament {get; set;} // Navigation Property. One Tournamnet per PlayerTournaments
+
     }
 }

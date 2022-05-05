@@ -42,6 +42,9 @@ namespace PlayerTournaments.Migrations
                     b.Property<int>("PlayerID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Score")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("TournamentID", "PlayerID");
 
                     b.HasIndex("PlayerID");
