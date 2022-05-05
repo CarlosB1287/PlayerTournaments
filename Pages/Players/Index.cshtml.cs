@@ -46,6 +46,7 @@ namespace PlayerTournaments.Pages.Players
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
+
             var query = _context.Player.Select(p => p);
             List<SelectListItem> sortItems = new List<SelectListItem> {
                 new SelectListItem { Text = "FirstName Ascending", Value = "first_asc" },
@@ -63,7 +64,6 @@ namespace PlayerTournaments.Pages.Players
                 case "first_desc":
                     query = query.OrderByDescending(p => p.FirstName);
                     break;
-                // Add more sorting cases as needed
             }
 
         NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -72,6 +72,7 @@ namespace PlayerTournaments.Pages.Players
         
         IQueryable<Player> PlayersName = from s in query
                                         select s;
+        // will sort by last name in decending order
         if (!String.IsNullOrEmpty(searchString))
         {
             PlayersName = PlayersName.Where(s => s.LastName.Contains(searchString)
@@ -80,6 +81,7 @@ namespace PlayerTournaments.Pages.Players
 
         switch (sortOrder)
         {
+            //sorts in descending order
             case "name_desc":
                 PlayersName = PlayersName.OrderByDescending(s => s.LastName);
                 break;

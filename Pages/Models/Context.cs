@@ -12,7 +12,7 @@ namespace PlayerTournaments.Models
         {
             modelBuilder.Entity<PlayerTournament>().HasKey(s => new {s.TournamentID, s.PlayerID});
         }
-
+        //dbSets for Tournament, Player and PlayerTournamnet
         public DbSet<Tournament> Tournament {get; set;}
 
         public DbSet<Player> Player {get; set;}
