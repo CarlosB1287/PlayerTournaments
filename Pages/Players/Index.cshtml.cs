@@ -46,10 +46,6 @@ namespace PlayerTournaments.Pages.Players
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
-        
-            //Player = await _context.Player.ToListAsync();
-            // Sorting support
-            // Break up query. Do basic query first that just selects all Players
             var query = _context.Player.Select(p => p);
             List<SelectListItem> sortItems = new List<SelectListItem> {
                 new SelectListItem { Text = "FirstName Ascending", Value = "first_asc" },
@@ -92,7 +88,7 @@ namespace PlayerTournaments.Pages.Players
                 break;
         }
 
-            Player = await query.Skip((PageNum-1)*PageSize).Take(PageSize).Include(s => s.PlayerTournaments).ThenInclude(sc => sc.Tournament).ToListAsync();
+            Player = await PlayersName.Skip((PageNum-1)*PageSize).Take(PageSize).Include(s => s.PlayerTournaments).ThenInclude(sc => sc.Tournament).ToListAsync();
         }
     }
 }
