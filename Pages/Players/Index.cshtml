@@ -16,8 +16,8 @@
         <p>
             Find by name:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to List</a>
+            <input type="submit" value="Search" class="btn btn-primary" /> 
+            <a asp-page="./Index"></a>
         </p>
     </div>
 </form>
@@ -33,19 +33,13 @@
     <thead>
         <tr>
             <th>
-                 @{
-                    // Alternate sort order
-                    var firstSort = "first_asc";
-                    if (Model.CurrentSort == "first_asc")
-                    {
-                        firstSort = "first_desc";
-                    }
-                }
-                <a asp-page="./Index" asp-route-CurrentSort="@firstSort">@Html.DisplayNameFor(model => model.Player[0].FirstName)</a>
+               @Html.DisplayNameFor(model => model.Player[0].FirstName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Player[0].LastName)
-            </th>
+
+            <td>
+               @Html.DisplayNameFor(model => model.Player[0].LastName)
+            </td>
+             
             <th></th>
         </tr>
     </thead>
